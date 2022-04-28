@@ -38,7 +38,7 @@ const cartContainer = document.querySelector('.cart__items');
 
 let price = 0;
 const totalPrice = document.querySelector('.total-price');
-
+// FUNÇÂO QUE ATUALIZA O PREÇO
 function attPrices() {
   const totalPriceItens = returnTotalArray();
   const totalPriceArray = [];
