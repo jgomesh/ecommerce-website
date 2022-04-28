@@ -29,7 +29,7 @@ function createProductItemElement({ sku, name, image, price }) {
 function getSkuFromProductItem(item) {
   return item.querySelector('span.item__sku').innerText;
 }
-
+// FUNÇÂO QUE PEGA TODOS OS PREÇOS NO CARRINHO
 function returnTotalArray() {
   const totalPriceItens = document.querySelectorAll('.price-number');
   return totalPriceItens;
