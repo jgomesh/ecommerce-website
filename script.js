@@ -40,15 +40,15 @@ let price = 0;
 const totalPrice = document.querySelector('.total-price');
 // FUNÇÂO QUE ATUALIZA O PREÇO
 function attPrices() {
-  const totalPriceItens = returnTotalArray();
-  const totalPriceArray = [];
-  totalPriceItens.forEach((item) => totalPriceArray.push(item.innerText.replace(/,/g, '')));
-  if (totalPriceItens.length === 0) {
+  const totalPriceItens = returnTotalArray(); // COLOCA TODOS OS ELEMENTOS EM UMA CONSTANTE
+  const totalPriceArray = [];// ARRAY RESPONSAVEL POR GUARDAR OS PREÇOS COMO NUMEROS
+  totalPriceItens.forEach((item) => totalPriceArray.push(item.innerText.replace(/,/g, '')));  // ESTRUTURA DE REPETIÇÃO QUE COLOCA CADA PREÇO DENTRO DO ARRAY VAZIO
+  if (totalPriceItens.length === 0) {// SE NAO TIVER NADA DENTRO DO ARRAY O PREÇO É ZERO
     price = 0;
   } else {
-    const totalPrices = totalPriceArray.reduce((acumulador, elementoAtual) => {
-      const teste = parseFloat(acumulador, 10) + parseFloat(elementoAtual, 10);
-      return teste;
+    const totalPrices = totalPriceArray.reduce((acumulador, elementoAtual) => {// HOF reduce sendo usada para calcular o preço total somando os preços individuais
+      const atual = parseFloat(acumulador, 10) + parseFloat(elementoAtual, 10);
+      return atual;
     });
     price = parseFloat(totalPrices.toString().slice(0, 7));
   }
