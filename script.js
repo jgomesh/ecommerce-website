@@ -78,7 +78,7 @@ function showCart() {
 }
 
 iconCart.addEventListener('click', showCart); 
-
+// FUNÇÂO QUE REMOVE O ITEM DO CARRINHO
 function cartItemClickListener(event) {
   // coloque seu código aqui
   cartContainer.removeChild(event.target.parentNode);// REMOVE O ELEMENTO PAI DO ELEMENTO CLICADO ( O ICONE CLOSE)
@@ -99,7 +99,7 @@ function cartItemClickListener(event) {
   totalPrice.innerText = `Total: $${price}`; // ATUALIZA O PREÇO NO ELEMENTO HTML
 }
 
-function createCartItemElement({ sku, name, salePrice, image }) {
+function createCartItemElement({ sku, name, salePrice, image }) {// FUNCAO QUE CRIA O ELEMENTO DO CARRIO
   if(sku === undefined) {
 
   } else {
@@ -114,28 +114,27 @@ function createCartItemElement({ sku, name, salePrice, image }) {
 
 // FUNÇÂO QUE CRIA A PARTE DOS PRODUTOS
 const createProductsPage = async () => {
-  const items = await fetchProducts('computador');
-  const itensSection = document.getElementsByClassName('items')[0];
-  itensSection.innerText = '';
-  items.results.forEach((item) => {
+  const items = await fetchProducts('computador'); // CHAMA A API COM A FUNÇÂO CRIADA ANTERIORMENTE
+  const itensSection = document.getElementsByClassName('items')[0]; // PREGA O PRIMEIRO ELEMENTO COM ESSA CLASSE
+  itensSection.innerText = '';// APAGA O TEXTO CARREGANDO
+  items.results.forEach((item) => {//ESTRUTURA DE REPETIÇÃO QUE PEGA CADA ITEM RECEBIDO DA API E USA A FUNCAO PARA CRIAR O ELEMENTO
     const { id: sku, title: name, thumbnail: image, price} = item;
     const productItemContainer = createProductItemElement({ sku, name, image, price });
-    itensSectionused = itensSection;
     itensSection.appendChild(productItemContainer);
   });
 };
-
+// FUNCAO COLOCA O PRODUTO CLICADO NO CARRINHO
 const productInfo = async (elemento) => {
-  const id = elemento.target.parentNode.children[0].innerText;
-  const item = await fetchItem(id);
+  const id = elemento.target.parentNode.children[0].innerText; // PEGA O ID DO ELEMENTO CLICADO
+  const item = await fetchItem(id);// FUNCAO QUE CHAMA A API COM SOMENTE O ITEM DO ID CHAMADO
   const { id: sku, title: name, price: salePrice, thumbnail: image } = item;
-  const itemAdded = createCartItemElement({ sku, name, salePrice, image });
+  const itemAdded = createCartItemElement({ sku, name, salePrice, image });// CRIA ELEMENTO HTML DO CARRINHO
   cartContainer.appendChild(itemAdded);
-  const newIcons = document.querySelectorAll('.icon');
+  const newIcons = document.querySelectorAll('.icon');// SELECIONA OS ICONS DE CLOSE PARA APAGAR O ITEM
   newIcons.forEach((item) => item.addEventListener('click',  cartItemClickListener));
   const cartHtml = cartContainer.innerHTML;
   saveCartItems(cartHtml);
-  const totalPriceItens = returnTotalArray();
+  const totalPriceItens = returnTotalArray();// FAZ O CALCULO DO PREÇO ATUAL
   const totalPriceArray = [];
   totalPriceItens.forEach((items) => totalPriceArray.push(items.innerText.replace(/,/g, '')));
   const totalPrices = totalPriceArray.reduce((acumulador, elementoAtual) => {
@@ -144,7 +143,7 @@ const productInfo = async (elemento) => {
   });
   price = parseFloat(totalPrices.toString().slice(0, 7));
   iconCart.style.color = 'red';
-  totalPrice.innerText = `Total: $${price}`;
+  totalPrice.innerText = `Total: $${price}`; // ATUALIZA O HTML DO PREÇO
 };
 
 const eraseButton = document.querySelector('.empty-cart');
