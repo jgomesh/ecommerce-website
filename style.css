@@ -84,7 +84,7 @@ body {
 .item {
   margin: 5px;
   width: 200px;
-  color: rgb(0, 0, 0);
+  color: white;
   background-color: rgba(56, 56, 56, 0.651) !important;
   margin-right: 5%;
   margin-left: 5%;
