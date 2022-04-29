@@ -84,19 +84,7 @@ function cartItemClickListener(event) {
   cartContainer.removeChild(event.target.parentNode);// REMOVE O ELEMENTO PAI DO ELEMENTO CLICADO ( O ICONE CLOSE)
   const cartHtml = cartContainer.innerHTML; // GUARDA O CONTEUDO HTML DO CONTAINER TOTAL DO CARRINHO
   saveCartItems(cartHtml); // SALVA NO LOCAL STORAGE
-  const totalPriceItens = returnTotalArray();// GUARDA O ARRAY DE PREÇOS
-  const totalPriceArray = [];
-  totalPriceItens.forEach((item) => totalPriceArray.push(item.innerText.replace(/,/g, ''))); // DA PUSH NO PREÇO 
-  if (totalPriceItens.length === 0) { // SE NAO TIVER NADA NO CARRINHO O PREÇO É 0
-    price = 0;
-  } else {
-    const totalPrices = totalPriceArray.reduce((acumulador, elementoAtual) => { // ESTRUTURA DE REPRIÇAO QUE SOMA OS PREÇOS E RETORNA A SOMA
-      const teste = parseFloat(acumulador, 10) + parseFloat(elementoAtual, 10);
-      return teste;
-    });
-    price = parseFloat(totalPrices.toString().slice(0, 7));// ARREDONDA
-  }
-  totalPrice.innerText = `Total: $${price}`; // ATUALIZA O PREÇO NO ELEMENTO HTML
+  attPrices();
 }
 
 function createCartItemElement({ sku, name, salePrice, image }) {// FUNCAO QUE CRIA O ELEMENTO DO CARRIO
@@ -134,16 +122,8 @@ const productInfo = async (elemento) => {
   newIcons.forEach((item) => item.addEventListener('click',  cartItemClickListener));
   const cartHtml = cartContainer.innerHTML;
   saveCartItems(cartHtml);
-  const totalPriceItens = returnTotalArray();// FAZ O CALCULO DO PREÇO ATUAL
-  const totalPriceArray = [];
-  totalPriceItens.forEach((items) => totalPriceArray.push(items.innerText.replace(/,/g, '')));
-  const totalPrices = totalPriceArray.reduce((acumulador, elementoAtual) => {
-    const result = parseFloat(acumulador) + parseFloat(elementoAtual);
-    return result;
-  });
-  price = parseFloat(totalPrices.toString().slice(0, 7));
   iconCart.style.color = 'red';
-  totalPrice.innerText = `Total: $${price}`; // ATUALIZA O HTML DO PREÇO
+  attPrices();
 };
 
 const eraseButton = document.querySelector('.empty-cart');
@@ -159,7 +139,6 @@ function eraseCart() {
 eraseButton.addEventListener('click', eraseCart);
 
 window.onload = async () => {
-  iconCart.style.color = 'white'
   // CRIANDO PARTE DOS PRODUTOS
   await createProductsPage();
   const productsButtons = document.querySelectorAll('.item');
@@ -169,9 +148,11 @@ window.onload = async () => {
   const savedCartHtml = await JSON.parse(getSavedCartItems('cartItems'));
   const cartHtml = document.querySelector('.cart__items');
   cartHtml.innerHTML = savedCartHtml;
+  // READICIONA O EVENT LISTENER DOS ELEMENTOS RECARREGADOS NA PAGINA
   const newItems = document.querySelectorAll('.cart__item');
   const newIcons = document.querySelectorAll('.icon');
   newItems.forEach((item) => item.addEventListener('click', cartItemClickListener));
   newIcons.forEach((item) => item.addEventListener('click',  cartItemClickListener));
+  // ATUALIZA O PREÇO
   attPrices();
 };
