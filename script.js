@@ -101,14 +101,18 @@ function createCartItemElement({ sku, name, salePrice, image }) {// FUNCAO QUE C
 }
 
 // FUNÇÂO QUE CRIA A PARTE DOS PRODUTOS
-const createProductsPage = async () => {
-  const items = await fetchProducts('computador'); // CHAMA A API COM A FUNÇÂO CRIADA ANTERIORMENTE
+const createProductsPage = async (produto) => {
+  const items = await fetchProducts(produto); // CHAMA A API COM A FUNÇÂO CRIADA ANTERIORMENTE
   const itensSection = document.getElementsByClassName('items')[0]; // PREGA O PRIMEIRO ELEMENTO COM ESSA CLASSE
   itensSection.innerText = '';// APAGA O TEXTO CARREGANDO
   items.results.forEach((item) => {//ESTRUTURA DE REPETIÇÃO QUE PEGA CADA ITEM RECEBIDO DA API E USA A FUNCAO PARA CRIAR O ELEMENTO
     const { id: sku, title: name, thumbnail: image, price} = item;
     const productItemContainer = createProductItemElement({ sku, name, image, price });
     itensSection.appendChild(productItemContainer);
+  });
+  const productsButtons = document.querySelectorAll('.item');
+  productsButtons.forEach((item) => {
+    item.addEventListener('click', productInfo);
   });
 };
 // FUNCAO COLOCA O PRODUTO CLICADO NO CARRINHO
@@ -140,7 +144,7 @@ eraseButton.addEventListener('click', eraseCart);
 
 window.onload = async () => {
   // CRIANDO PARTE DOS PRODUTOS
-  await createProductsPage();
+  await createProductsPage('computador');
   const productsButtons = document.querySelectorAll('.item');
   productsButtons.forEach((item) => {
     item.addEventListener('click', productInfo);
@@ -155,4 +159,5 @@ window.onload = async () => {
   newIcons.forEach((item) => item.addEventListener('click',  cartItemClickListener));
   // ATUALIZA O PREÇO
   attPrices();
+  await createProductsPage('celular');
 };
