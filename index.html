@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>shoppIT</title>
     <link rel="stylesheet" href="style.css" />
       <!-- ICONS -->
 
@@ -47,7 +47,10 @@
     <section class="cart">
       <ol class="cart__items"></ol>
       <span class="total-price"></span>
-      <button class="empty-cart btn btn-primary">Esvaziar carrinho</button>
+      <div class="empty-cart2">
+        <button class="empty-cart btn btn-primary">Esvaziar carrinho <i class="uil uil-store-slash"></i></button>
+        <button class="empty-cart3 btn green">Finalizar Compra $</button>
+      </div>
     </section>  
 
   <div id="carouselBasicExample" class="carousel slide carousel-fade shadow-5-strong" data-mdb-ride="carousel">
@@ -123,9 +126,15 @@
     </button>
     </div>
   </div>
-
-  <h4 class="mb-5 text-center mt-5">Produtos disponíveis</h4>
-  <section class="container">
+  <div class="use">
+    <h4 class="mb-5 text-center mt-5">Produtos disponíveis</h4>
+    <div>
+      <input type="text" name="search" id="search" placeholder="Pesquise por um produto">
+      <i class="uil uil-search color"></i>
+    </div>
+  <hr class='bar'/>
+  </div>
+  <section class="">
     <section class="items"><span class="loading">carregando...</span></section>
   </section>
   <script type="text/javascript" src="js/mdb.min.js"></script>

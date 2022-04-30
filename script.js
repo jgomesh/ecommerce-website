@@ -21,7 +21,9 @@ function createProductItemElement({ sku, name, image, price }) {
   const priceText = createCustomElement('span', 'item__price', price)
   priceText.innerText = '$' + priceText.innerText
   section.appendChild(priceText);
-  section.appendChild(createCustomElement('button', 'item__add btn btn-primary', 'Adicionar ao carrinho!'));
+  const button = createCustomElement('button', 'item__add btn btn-primary', 'Adicionar ao carrinho! ');
+  button.innerHTML += '<i class="uil uil-plus-circle"></i>';
+  section.appendChild(button);
 
   return section;
 }
@@ -93,7 +95,7 @@ function createCartItemElement({ sku, name, salePrice, image }) {// FUNCAO QUE C
   } else {
     const li = document.createElement('li');
     li.className = 'cart__item';  
-    const texto1 = `SKU: ${sku} | NAME: ${name} | <div class='price'>PRICE: $`;
+    const texto1 = `<span class='name'>${name}</span><div class='price'>PRICE: $`;
     li.innerHTML = `<i class="uil uil-times icon"></i><img src='${image}' class='img-fluid cart__image'>${texto1}<span class='price-number'>${salePrice}</span></div><hr/ class='barra'>`;
     li.addEventListener('click', cartItemClickListener);
     return li;
@@ -101,14 +103,18 @@ function createCartItemElement({ sku, name, salePrice, image }) {// FUNCAO QUE C
 }
 
 // FUNÇÂO QUE CRIA A PARTE DOS PRODUTOS
-const createProductsPage = async () => {
-  const items = await fetchProducts('computador'); // CHAMA A API COM A FUNÇÂO CRIADA ANTERIORMENTE
+const createProductsPage = async (produto) => {
+  const items = await fetchProducts(produto); // CHAMA A API COM A FUNÇÂO CRIADA ANTERIORMENTE
   const itensSection = document.getElementsByClassName('items')[0]; // PREGA O PRIMEIRO ELEMENTO COM ESSA CLASSE
   itensSection.innerText = '';// APAGA O TEXTO CARREGANDO
   items.results.forEach((item) => {//ESTRUTURA DE REPETIÇÃO QUE PEGA CADA ITEM RECEBIDO DA API E USA A FUNCAO PARA CRIAR O ELEMENTO
     const { id: sku, title: name, thumbnail: image, price} = item;
     const productItemContainer = createProductItemElement({ sku, name, image, price });
     itensSection.appendChild(productItemContainer);
+  });
+  const productsButtons = document.querySelectorAll('.item');
+  productsButtons.forEach((item) => {
+    item.addEventListener('click', productInfo);
   });
 };
 // FUNCAO COLOCA O PRODUTO CLICADO NO CARRINHO
@@ -138,9 +144,17 @@ function eraseCart() {
 
 eraseButton.addEventListener('click', eraseCart);
 
+const changeProduct = async () => {
+  const searchInput = document.querySelector('#search')
+  const itensSection = document.getElementsByClassName('items')[0]; // PREGA O PRIMEIRO ELEMENTO COM ESSA CLASSE
+  itensSection.innerText = 'carregando...';// APAGA O TEXTO CARREGANDO
+  const result = await createProductsPage(searchInput.value);
+  return result
+}
+
 window.onload = async () => {
   // CRIANDO PARTE DOS PRODUTOS
-  await createProductsPage();
+  await createProductsPage('computador');
   const productsButtons = document.querySelectorAll('.item');
   productsButtons.forEach((item) => {
     item.addEventListener('click', productInfo);
@@ -154,5 +168,15 @@ window.onload = async () => {
   newItems.forEach((item) => item.addEventListener('click', cartItemClickListener));
   newIcons.forEach((item) => item.addEventListener('click',  cartItemClickListener));
   // ATUALIZA O PREÇO
+  const searchIcon = document.querySelector('.color')
+  searchIcon.addEventListener('click', () => changeProduct());
+  const searchInput = document.querySelector('#search')
+  searchInput.addEventListener("keypress", (event)=> {
+    if (event.keyCode === 13) { // key code of the keybord key
+      event.preventDefault();
+      changeProduct()
+	 // your code to Run
+    }
+  });
   attPrices();
 };
