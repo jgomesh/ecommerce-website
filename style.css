@@ -165,11 +165,18 @@ body {
 }
 
 .empty-cart {
+  transition: .6s;
   width: 170px;
   height: 35px;
   margin: 0 auto;
   border: 2px solid rgb(5, 52, 219);
-  background-color: rgb(249, 249, 246);
+  background-color: rgb(231, 74, 74) !important;
+}
+
+
+.empty-cart:hover {
+  transition: .6s;
+  background-color: rgb(88, 32, 32) !important;
 }
 
 .price {
@@ -310,4 +317,49 @@ body::-webkit-scrollbar-thumb {
   height: 35px;
   margin: 0 auto;
   margin-left: 10px;
+}
+
+#search {
+  height: 30px;
+  margin-left: 25px;
+  border-radius: 5px;
+  border: none;
+  width: 40vh;
+  font-size: 1em;
+  color: grey;
+  padding-left: 5px;
+  border: 2px solid rgb(138, 137, 137);
+}
+
+.color {
+  color: rgb(77, 74, 74);
+  cursor: pointer;
+  font-size: 2em;}
+
+.color:hover {
+  color: rgba(24, 22, 22, 0.473) !important;
+}
+
+.use {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 100%;
+}
+
+.bar {
+  background-color: rgb(7, 7, 7) !important;
+  margin-top: 130px;
+  width: 18%;
+  height: 3px  !important;
+}
+
+.name {
+  font-size: 0.8em;
+}
+
+.flex{
+  display: flex;
 }
