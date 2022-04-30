@@ -21,7 +21,9 @@ function createProductItemElement({ sku, name, image, price }) {
   const priceText = createCustomElement('span', 'item__price', price)
   priceText.innerText = '$' + priceText.innerText
   section.appendChild(priceText);
-  section.appendChild(createCustomElement('button', 'item__add btn btn-primary', 'Adicionar ao carrinho!'));
+  const button = createCustomElement('button', 'item__add btn btn-primary', 'Adicionar ao carrinho! ');
+  button.innerHTML += '<i class="uil uil-plus-circle"></i>';
+  section.appendChild(button);
 
   return section;
 }
