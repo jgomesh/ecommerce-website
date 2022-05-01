@@ -65,8 +65,7 @@ const iconCart = document.querySelector('.material-icons');
 function showCart() {
   iconCart.style.color = 'white'
   if (clicked === false) {
-    console.log(cartAtualContainer.display)
-    console.log('hey');
+    cartAtualContainer.style.display = 'flex'
     cartTitleContainer.style.width = '500px';
     cartAtualContainer.style.left = '60%';
     cartAtualContainer.style.top = '5px'; 
@@ -147,9 +146,21 @@ eraseButton.addEventListener('click', eraseCart);
 const changeProduct = async () => {
   const searchInput = document.querySelector('#search')
   const itensSection = document.getElementsByClassName('items')[0]; // PREGA O PRIMEIRO ELEMENTO COM ESSA CLASSE
-  itensSection.innerText = 'carregando...';// APAGA O TEXTO CARREGANDO
+  itensSection.innerHTML = "<div class='center loading'><div class='ring'></div><span class='loading-span'>carregando...</span></div>";// APAGA O TEXTO CARREGANDO
   const result = await createProductsPage(searchInput.value);
   return result
+}
+
+function loadingPage() {
+  const loadingPage = document.querySelector('#teste');
+  const main = document.querySelector('#main');
+  const footer = document.querySelector('#footer');
+  footer.style.display = 'none'
+  main.style.display = 'none';
+  cartAtualContainer.style.display = 'none'
+  loadingPage.style.display = 'block';
+  cartTitleContainer.style.width = '0px';
+  clicked = false;
 }
 
 window.onload = async () => {
@@ -174,9 +185,10 @@ window.onload = async () => {
   searchInput.addEventListener("keypress", (event)=> {
     if (event.keyCode === 13) { // key code of the keybord key
       event.preventDefault();
-      changeProduct()
-	 // your code to Run
+      changeProduct();
     }
   });
+  const finalize = document.querySelector('.empty-cart3');
+  finalize.addEventListener('click', loadingPage)
   attPrices();
 };
