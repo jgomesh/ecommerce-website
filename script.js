@@ -160,6 +160,7 @@ function loadingPage() {
   cartAtualContainer.style.display = 'none'
   loadingPage.style.display = 'block';
   cartTitleContainer.style.width = '0px';
+  clicked = false;
 }
 
 window.onload = async () => {
