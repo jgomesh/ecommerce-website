@@ -43,7 +43,12 @@
         <span class="cart__title">Minhas compras</span>
       </div>
     </header>
-
+    <section id="teste">
+      <div class='center checked'>
+        <div class='ring'></div>
+        <span class='loading-span'>Finalizando ...</span>
+      </div>
+    </section>
     <section class="cart">
       <ol class="cart__items"></ol>
       <span class="total-price"></span>
@@ -52,135 +57,140 @@
         <button class="empty-cart3 btn green">Finalizar Compra $</button>
       </div>
     </section>  
-
-  <div id="carouselBasicExample" class="carousel slide carousel-fade shadow-5-strong" data-mdb-ride="carousel">
-    <!-- Indicators -->
-    <div class="carousel-indicators">
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="0"
-        class="active"
-        aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-mdb-target="#carouselBasicExample"
-        data-mdb-slide-to="2"
-        aria-label="Slide 3"
-      ></button>
-    </div>
-
-    <!-- Inner -->
-    <div class="carousel-inner">
-      <!-- Single item -->
-      <div class="carousel-item active">
-        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.233);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-center text-white">
-              <h1>Smart Watchs</h1>
+    <main id="main">
+      <div id="carouselBasicExample" class="carousel slide carousel-fade shadow-5-strong" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-mdb-target="#carouselBasicExample"
+            data-mdb-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-mdb-target="#carouselBasicExample"
+            data-mdb-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-mdb-target="#carouselBasicExample"
+            data-mdb-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+  
+        <!-- Inner -->
+        <div class="carousel-inner">
+          <!-- Single item -->
+          <div class="carousel-item active">
+            <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.233);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-center text-white">
+                  <h1>Smart Watchs</h1>
+                </div>
+              </div>
             </div>
           </div>
+  
+          
+          <!-- Single item -->
+          <div class="carousel-item">
+            <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.233);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-center text-white">
+                  <h1>Notebooks</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Single item -->
+          <div class="carousel-item">
+            <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.212);">
+              <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-center text-white">
+                  <h1>Diversos outros items</h1>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Inner -->
+  
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
         </div>
       </div>
-
-      
-      <!-- Single item -->
-      <div class="carousel-item">
-        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.233);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-center text-white">
-              <h1>Notebooks</h1>
-            </div>
-          </div>
+      <div class="use">
+        <h4 class="mb-5 text-center mt-5">Produtos disponíveis</h4>
+        <div>
+          <input type="text" name="search" id="search" placeholder="Pesquise por um produto">
+          <i class="uil uil-search color"></i>
         </div>
+      <hr class='bar'/>
       </div>
-
-      <!-- Single item -->
-      <div class="carousel-item">
-        <div class="mask" style="background-color: hsla(0, 0%, 0%, 0.212);">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-center text-white">
-              <h1>Diversos outros items</h1>
-            </div>
+      <section class="">
+        <section class="items">
+          <div class='center'>
+            <div class='ring'></div>
+            <span class='loading-span'>carregando...</span>
           </div>
-        </div>
-    </div>
-    <!-- Inner -->
-
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-    </div>
-  </div>
-  <div class="use">
-    <h4 class="mb-5 text-center mt-5">Produtos disponíveis</h4>
-    <div>
-      <input type="text" name="search" id="search" placeholder="Pesquise por um produto">
-      <i class="uil uil-search color"></i>
-    </div>
-  <hr class='bar'/>
-  </div>
-  <section class="">
-    <section class="items"><span class="loading">carregando...</span></section>
-  </section>
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Custom scripts -->
-  <script type="text/javascript"></script>
-
-  <!-- Footer -->
-  <footer class=" text-center mt-5" style="background-color:#afacac;">
-    <!-- Grid container -->
-    <div class="container p-4">
-
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
-
-        <!-- Twitter -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
-
-        <!-- Google -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
-
-        <!-- Instagram -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
-
-        <!-- Linkedin -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
-        <!-- Github -->
-        <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+        </section>
       </section>
-      <!-- Section: Social media -->
+    </main>
+    <!-- Footer -->
+    <footer id='footer' class="text-center mt-5" style="background-color:#afacac;">
+      <!-- Grid container -->
+      <div class="container p-4">
+
+        <!-- Section: Social media -->
+        <section class="mb-4">
+          <!-- Facebook -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+          <!-- Twitter -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+          <!-- Google -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i class="fab fa-google"></i></a>
+
+          <!-- Instagram -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+          <!-- Linkedin -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+          <!-- Github -->
+          <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i class="fab fa-github"></i></a>
+        </section>
+        <!-- Section: Social media -->
 
 
 
 
-    </div>
-    <!-- Grid container -->
+      </div>
+      <!-- Grid container -->
 
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-      © 2022 Copyright:
-      <a class="text-dark" href="#header">João Otávio Gomes Hugill</a>
-    </div>
-    <!-- Copyright -->
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2022 Copyright:
+        <a class="text-dark" href="#header">João Otávio Gomes Hugill</a>
+      </div>
+      <!-- Copyright -->
 
-  </footer>
-  <!-- Footer -->
+    </footer>
+    <!-- Footer -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript"></script>
   </body>
 </html>
